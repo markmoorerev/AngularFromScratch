@@ -6,7 +6,9 @@ namespace API.DTOs
     {
         [Required(ErrorMessage = "Hey dummy, you need to have a username!")]
         public string UserName { get; set; }
+
         [Required(ErrorMessage = "Hey dummy, you need to have a Password!!")]
+        [StringLength(8, MinimumLength = 4)]
         public string Password { get; set; }
     }
 }
