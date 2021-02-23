@@ -1,3 +1,6 @@
+// see notes below for updates.This text is used to seed a Db with random data produced at
+// https://next.json-generator.com/ for Entity Framework. 
+
 [
   '{{repeat(5)}}',
   {
@@ -22,3 +25,34 @@
     ]
   }
 ]
+
+// update... the below syntax is valid as of  02/20/21 but 
+// the date returns as a long format instead of the "1982-4-26" like in the video.
+
+[
+  {
+    'repeat(5)': {
+      UserName: '{{firstName("female")}}',
+      Gender: 'female',
+      DateOfBirth: '{{date(new Date(1950,0,1), new Date(1999, 11, 31), "YYYY-MM-dd")}}',
+      KnownAs: function(){ return this.UserName; },
+      Created: '{{date(new Date(2019, 0, 1), new Date(2020,5,30), "YYYY-MM-dd")}}',
+      LastActive: '{{date(new Date(2020, 4, 1), new Date(2020,5,30), "YYYY-MM-dd")}}',
+      Introduction: '{{lorem(1, "paragraphs")}}',
+      LookingFor: '{{lorem(1, "paragraphs")}}',
+      Interests: '{{lorem(1, "sentences")}}',
+      City: '{{city()}}',
+      Country: '{{country()}}',
+      Photos: [
+          {
+            Url: function(num) {
+            return 'https://randomuser.me/api/portraits/women/' + num.integer(1,99) + '.jpg';
+          },
+          IsMain: true
+        }
+      ]
+    }
+  }
+]
+
+//
